@@ -1,18 +1,17 @@
 import { Request, Response } from "express";
 import { CommentModel } from "../model/commentModel";
-import { PostModel } from "../model/postModels";
 
 // Crear un nuevo comentario
 export const createComment = async (req: Request, res: Response) => {
   try {
-    const { text, postId } = req.body;
-    const post = await PostModel.findById(postId);
-    if (!post) {
-      return res.status(404).json({ error: "Publicación no encontrada" });
-    }
+    const { text, post } = req.body;
     const comment = new CommentModel({ text, post });
-    await comment.save();
-    res.status(201).json(comment);
+    const commentSaved = await comment.save();
+    res.json({
+      id: commentSaved._id,
+      comment_text: commentSaved.text,
+      owner: commentSaved.post,
+    });
   } catch (error) {
     res.status(500).json({ error: "Error al crear el comentario" });
   }
