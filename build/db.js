@@ -12,19 +12,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./app"));
+exports.connectDB = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = require("./config");
-const db_1 = require("./db");
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield (0, db_1.connectDB)();
-            app_1.default.listen(config_1.PORT);
-            console.log(`Listening on port http://localhost:${config_1.PORT}`);
-        }
-        catch (error) {
-            console.error(error);
-        }
-    });
-}
-main();
+// import dotenv from "dotenv";
+// dotenv.config();
+const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield mongoose_1.default.connect(config_1.URI);
+        console.log("MongoDB is connected");
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+exports.connectDB = connectDB;
