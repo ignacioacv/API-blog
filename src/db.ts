@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
+import { URI } from "./config";
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://legalle:9053DAF9@cluster0.32uokwb.mongodb.net/?retryWrites=true&w=majority"
-    );
+    await mongoose.connect(URI);
     console.log("MongoDB is connected");
   } catch (error) {
     console.error(error);
