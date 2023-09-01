@@ -4,7 +4,7 @@ import {
   createComment,
   editCommentById,
   deleteCommentById,
-  getCommentsById,
+  getCommentById,
 } from "../controller/commentsController";
 
 const router = Router();
@@ -13,7 +13,7 @@ router.post("/comments", createComment);
 
 router.get("/comments", getComments);
 
-router.get("/comments/:id", getCommentsById);
+router.get("/comments/:id", getCommentById);
 
 router.put("/comments/:id", editCommentById);
 

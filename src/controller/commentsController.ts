@@ -13,7 +13,7 @@ export const getComments = async (_req: Request, res: Response) => {
 };
 
 // Obtener una comentario por ID
-export const getCommentsById = async (req: Request, res: Response) => {
+export const getCommentById = async (req: Request, res: Response) => {
   try {
     const commentsId = req.params.id;
     const comment = await CommentModel.findById(commentsId).populate("post");
