@@ -1,0 +1,15 @@
+# Ignorar módulos de Node.js (carpeta node_modules)
+
+node_modules/
+
+# Ignorar archivos dentro de la carpeta build
+
+build/
+
+# Ignorar el archivo tsconfig.json
+
+tsconfig.json
+
+# Ignorar el archivo .eslintrc.js
+
+.eslintrc.js
