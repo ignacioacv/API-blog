@@ -1,5 +1,4 @@
 import { prop, getModelForClass } from "@typegoose/typegoose";
-
 class Post {
   @prop({ required: true })
   title: string;
