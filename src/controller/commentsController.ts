@@ -12,6 +12,20 @@ export const getComments = async (_req: Request, res: Response) => {
   }
 };
 
+// Obtener una comentario por ID
+export const getCommentsById = async (req: Request, res: Response) => {
+  try {
+    const commentsId = req.params.id;
+    const comment = await CommentModel.findById(commentsId).populate("post");
+    if (!comment) {
+      return res.status(404).json({ error: "Publicación no encontrada" });
+    }
+    res.json(comment);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener la publicación" });
+  }
+};
+
 // Crear un nuevo comentario
 export const createComment = async (req: Request, res: Response) => {
   try {
