@@ -1,6 +1,17 @@
 import { Request, Response } from "express";
 import { CommentModel } from "../model/commentModel";
 
+//Buscar comentario
+
+export const getComments = async (_req: Request, res: Response) => {
+  try {
+    const posts = await CommentModel.find().populate("post");
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener los comentarios" });
+  }
+};
+
 // Crear un nuevo comentario
 export const createComment = async (req: Request, res: Response) => {
   try {
